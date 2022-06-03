@@ -1,9 +1,13 @@
 package main
 
 import (
-	"github.com/j-ew-s/ms-curso-catalog-api/grpcContext"
+	"fmt"
+
+	"github.com/j-ew-s/ms-curso-catalog-api/userService"
 )
 
 func main() {
-	grpcContext.Setup()
+
+	res, _ := userService.GetByUserId("1")
+	fmt.Println(res)
 }
