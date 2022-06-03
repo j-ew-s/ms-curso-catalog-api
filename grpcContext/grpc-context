@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"google.golang.org/grpc"
-	"github.com/j-ew-s/ms-curso-catalog-api/user"
+	"github.com/j-ew-s/ms-curso-user-api"
 )
 
 
@@ -20,5 +20,7 @@ func Setup() {
 
 	defer cc.Close
 	c := user.NewChatServiceClient(cc)
+
+	return c
 
 }
