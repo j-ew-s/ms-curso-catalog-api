@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/j-ew-s/ms-curso-catalog-api/userService"
+	"github.com/j-ew-s/ms-curso-catalog-api/userServiceGRPC"
 	"github.com/valyala/fasthttp"
 )
 
@@ -18,7 +18,7 @@ func GetToken(ctx *fasthttp.RequestCtx) {
 
 	id := fmt.Sprintf("%v", ctx.UserValue("token"))
 
-	resp, err := userService.GetByUserId(id)
+	resp, err := userServiceGRPC.GetByUserId(id)
 
 	httpStatusCode := 200
 
