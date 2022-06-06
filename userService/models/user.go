@@ -1,4 +1,4 @@
-package userService
+package userServiceModel
 
 type User struct {
 	Id      string   `json:"id,omitempty"`

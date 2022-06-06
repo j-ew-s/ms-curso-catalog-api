@@ -2,32 +2,22 @@ package main
 
 import (
 	"github.com/buaazp/fasthttprouter"
+	"github.com/j-ew-s/ms-curso-catalog-api/userService"
 	"github.com/valyala/fasthttp"
 )
 
 func main() {
 	CreateHTTPServer()
-	//res, _ := userService.GetByUserId("1")
-	//fmt.Println(res)
 }
 
 func CreateHTTPServer() {
 
 	router := fasthttprouter.New()
 
-	userService.setRoutes(&router)
-
-	setRoutes(router)
+	userService.SetRoutes(router)
 
 	fasthttp.ListenAndServe("5002", CORS(router.Handler))
 
-}
-
-// Configure all routes for controllers
-func setRoutes(router *fasthttprouter.Router) {
-
-	router.GET("/", recipescontroller.Ping)
-	router.GET("/:id", recipescontroller.Create)
 }
 
 var (
