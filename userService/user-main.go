@@ -6,6 +6,6 @@ import (
 
 func SetRoutes(router *fasthttprouter.Router) {
 
-	router.GET("/token/:token", GetToken)
+	router.GET("/token/:token", userController.GetToken)
 	//router.GET("/:id", recipescontroller.Create)
 }
