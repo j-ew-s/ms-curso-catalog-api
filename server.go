@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/buaazp/fasthttprouter"
-	"github.com/j-ew-s/ms-curso-catalog-api/userService"
+	"github.com/j-ew-s/ms-curso-catalog-api/user-services/controller"
 	"github.com/valyala/fasthttp"
 )
 
@@ -14,7 +14,7 @@ func CreateHTTPServer() {
 
 	router := fasthttprouter.New()
 
-	userService.SetRoutes(router)
+	controller.GetToken(router)
 
 	fasthttp.ListenAndServe("5002", CORS(router.Handler))
 
