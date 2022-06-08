@@ -2,11 +2,11 @@ package userService
 
 import (
 	"github.com/buaazp/fasthttprouter"
-	controller "github.com/j-ew-s/ms-curso-catalog-api/user-services/controller"
+	userApi "github.com/j-ew-s/ms-curso-catalog-api/user-services/api"
 )
 
 func SetRoutes(router *fasthttprouter.Router) {
 
-	router.GET("/token/:token", controller.GetToken)
+	router.GET("/token/:token", userApi.GetToken)
 	//router.GET("/:id", recipescontroller.Create)
 }

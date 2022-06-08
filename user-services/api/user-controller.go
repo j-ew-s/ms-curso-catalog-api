@@ -1,11 +1,11 @@
-package userServiceController
+package userApi
 
 import (
 	"encoding/json"
 	"fmt"
 	"time"
 
-	grcp "github.com/j-ew-s/ms-curso-catalog-api/user-services/grcp"
+	userGRPC "github.com/j-ew-s/ms-curso-catalog-api/user-services/grpc"
 	"github.com/valyala/fasthttp"
 )
 
@@ -18,7 +18,7 @@ func GetToken(ctx *fasthttp.RequestCtx) {
 
 	id := fmt.Sprintf("%v", ctx.UserValue("token"))
 
-	resp, err := grcp.GetByUserId(id)
+	resp, err := userGRPC.GetByUserId(id)
 
 	httpStatusCode := 200
 

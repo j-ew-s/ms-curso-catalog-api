@@ -1,4 +1,4 @@
-package userServiceGRPC
+package userGRPC
 
 import (
 	"context"
