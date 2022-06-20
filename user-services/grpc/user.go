@@ -11,7 +11,7 @@ import (
 func GetByUserId(userId string) (*user.User, error) {
 	var cc *grpc.ClientConn
 
-	cc, err := grpc.Dial(":5001", grpc.WithInsecure())
+	cc, err := grpc.Dial(":5500", grpc.WithInsecure())
 
 	if err != nil {
 		fmt.Println(fmt.Sprintf("GetByUserId gRPC DIAL falhou: %v", err))
@@ -38,7 +38,7 @@ func GetByUserId(userId string) (*user.User, error) {
 func IsTokenValid(token string) (*user.TokenValidation, error) {
 	var cc *grpc.ClientConn
 
-	cc, err := grpc.Dial(":5001", grpc.WithInsecure())
+	cc, err := grpc.Dial(":5500", grpc.WithInsecure())
 
 	if err != nil {
 		fmt.Println(fmt.Sprintf("IsTokenValid : gRPC DIAL falhou: %v", err))

@@ -1,8 +1,8 @@
 package api
 
 import (
+	"github.com/j-ew-s/ms-curso-catalog-api/common"
 	productModel "github.com/j-ew-s/ms-curso-catalog-api/product-services/models"
-	"github.com/j-ew-s/ms-curso-catalog-api/shared"
 	"github.com/valyala/fasthttp"
 )
 
@@ -39,7 +39,7 @@ func GetProducts(ctx *fasthttp.RequestCtx) {
 	// 2}
 
 	// added the shared
-	shared.PrepareResponse(ctx, httpStatusCode, product)
+	common.PrepareResponse(ctx, httpStatusCode, product)
 
 }
 

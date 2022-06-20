@@ -10,7 +10,7 @@ func main() {
 	router := fasthttprouter.New()
 
 	productService.SetRoutes(router)
-	fasthttp.ListenAndServe(":5002", CORS(router.Handler))
+	fasthttp.ListenAndServe(":5200", CORS(router.Handler))
 }
 
 var (

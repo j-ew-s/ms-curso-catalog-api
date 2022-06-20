@@ -1,9 +1,10 @@
-package shared
+package sessionServices
 
 import (
 	"errors"
 	"fmt"
 
+	common "github.com/j-ew-s/ms-curso-catalog-api/common"
 	userGRPC "github.com/j-ew-s/ms-curso-catalog-api/user-services/grpc"
 	"github.com/valyala/fasthttp"
 )
@@ -18,7 +19,7 @@ func CheckForLogingAndSetSession(requestHandler fasthttp.RequestHandler) fasthtt
 			GlobalSession = &Session{Token: token}
 			err := Authorization()
 			if err != nil {
-				PrepareResponse(ctx, 500, "Error")
+				common.PrepareResponse(ctx, 500, "Error")
 				return
 			}
 		}
@@ -36,18 +37,18 @@ func AuthSessionValidator(requestHandler fasthttp.RequestHandler) fasthttp.Reque
 
 			err := Authorization()
 			if err != nil {
-				PrepareResponse(ctx, 500, "Error")
+				common.PrepareResponse(ctx, 500, "Error")
 				return
 			}
 
 			if GlobalSession.TokenValidation.Status {
 				requestHandler(ctx)
 			} else {
-				PrepareResponse(ctx, 401, "Token não válido")
+				common.PrepareResponse(ctx, 401, "Token não válido")
 			}
 
 		} else {
-			PrepareResponse(ctx, 401, "Não tem acesso ao conteúdo")
+			common.PrepareResponse(ctx, 401, "Não tem acesso ao conteúdo")
 		}
 	}
 }
