@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
+	authGRPC "github.com/j-ew-s/ms-curso-catalog-api/auth-services/grpc"
 	common "github.com/j-ew-s/ms-curso-catalog-api/common"
-	userGRPC "github.com/j-ew-s/ms-curso-catalog-api/user-services/grpc"
 	"github.com/valyala/fasthttp"
 )
 
@@ -56,7 +56,7 @@ func AuthSessionValidator(requestHandler fasthttp.RequestHandler) fasthttp.Reque
 func Authorization() error {
 	fmt.Println(fmt.Sprintf("Token a ser buscado: %s", GlobalSession.Token))
 
-	resp, err := userGRPC.IsTokenValid(GlobalSession.Token)
+	resp, err := authGRPC.IsTokenValid(GlobalSession.Token)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("gRPC DIAL falhou: %v", err))
 		return errors.New(fmt.Sprintf("gRPC DIAL falhou: %v", err))

@@ -1,4 +1,4 @@
-package userGRPC
+package authGRPC
 
 import (
 	"context"

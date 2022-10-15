@@ -1,8 +1,8 @@
 package api
 
 import (
+	models "github.com/j-ew-s/ms-curso-catalog-api/catalog/models"
 	"github.com/j-ew-s/ms-curso-catalog-api/common"
-	productModel "github.com/j-ew-s/ms-curso-catalog-api/product-services/models"
 	"github.com/valyala/fasthttp"
 )
 
@@ -28,7 +28,7 @@ func GetProducts(ctx *fasthttp.RequestCtx) {
 		return
 	}*/
 	// 2 fmt.Println(fmt.Sprintf("Resposta: %v", resp))
-	product := &productModel.Product{}
+	product := &models.Product{}
 
 	// 2if resp.Status == true {
 	product.Id = "123890"
