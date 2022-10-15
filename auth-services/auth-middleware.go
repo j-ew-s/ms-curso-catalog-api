@@ -1,4 +1,4 @@
-package sessionServices
+package authServices
 
 import (
 	"errors"
@@ -6,17 +6,18 @@ import (
 
 	authGRPC "github.com/j-ew-s/ms-curso-catalog-api/auth-services/grpc"
 	common "github.com/j-ew-s/ms-curso-catalog-api/common"
+	sessionModels "github.com/j-ew-s/ms-curso-catalog-api/session-services/models"
 	"github.com/valyala/fasthttp"
 )
 
-var GlobalSession *Session
+var GlobalSession *sessionModels.Session
 
 func CheckForLogingAndSetSession(requestHandler fasthttp.RequestHandler) fasthttp.RequestHandler {
 	return func(ctx *fasthttp.RequestCtx) {
 		token := string(ctx.Request.Header.Peek("Authorization"))
 
 		if token != "" {
-			GlobalSession = &Session{Token: token}
+			GlobalSession = &sessionModels.Session{Token: token}
 			err := Authorization()
 			if err != nil {
 				common.PrepareResponse(ctx, 500, "Error")
@@ -33,7 +34,7 @@ func AuthSessionValidator(requestHandler fasthttp.RequestHandler) fasthttp.Reque
 		token := string(ctx.Request.Header.Peek("Authorization"))
 
 		if token != "" {
-			GlobalSession = &Session{Token: token}
+			GlobalSession = &sessionModels.Session{Token: token}
 
 			err := Authorization()
 			if err != nil {
