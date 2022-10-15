@@ -4,10 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/j-ew-s/ms-curso-user-api/user"
+	authGrpc "github.com/j-ew-s/ms-curso-auth-grpc/auth"
+
 	"google.golang.org/grpc"
 )
 
+/*
 func GetByUserId(userId string) (*user.User, error) {
 	var cc *grpc.ClientConn
 
@@ -19,9 +21,9 @@ func GetByUserId(userId string) (*user.User, error) {
 	}
 
 	defer cc.Close()
-	u := user.NewUserServiceClient(cc)
+	u := authGrpc.NewUserServiceClient(cc)
 
-	message := user.UserId{
+	message := authGrpc.UserId{
 		Id: userId,
 	}
 
@@ -34,8 +36,8 @@ func GetByUserId(userId string) (*user.User, error) {
 
 	return response, nil
 }
-
-func IsTokenValid(token string) (*user.TokenValidation, error) {
+*/
+func IsTokenValid(token string) (*authGrpc.TokenValidation, error) {
 	var cc *grpc.ClientConn
 
 	cc, err := grpc.Dial(":5500", grpc.WithInsecure())
@@ -46,9 +48,9 @@ func IsTokenValid(token string) (*user.TokenValidation, error) {
 	}
 
 	defer cc.Close()
-	u := user.NewUserServiceClient(cc)
+	u := authGrpc.NewUserServiceClient(cc)
 
-	message := user.Token{
+	message := authGrpc.Token{
 		Token: token,
 	}
 

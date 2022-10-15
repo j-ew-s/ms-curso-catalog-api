@@ -1,8 +1,8 @@
 package sessionServices
 
-import "github.com/j-ew-s/ms-curso-user-api/user"
+import "github.com/j-ew-s/ms-curso-auth-grpc/auth"
 
 type Session struct {
 	Token           string
-	TokenValidation *user.TokenValidation
+	TokenValidation *auth.TokenValidation
 }
