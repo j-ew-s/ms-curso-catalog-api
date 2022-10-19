@@ -2,14 +2,18 @@ package main
 
 import (
 	"github.com/buaazp/fasthttprouter"
-	catalogService "github.com/j-ew-s/ms-curso-catalog-api/catalog"
+	catalogtSerivces "github.com/j-ew-s/ms-curso-catalog-api/catalog-services"
+	database "github.com/j-ew-s/ms-curso-catalog-api/database"
 	"github.com/valyala/fasthttp"
 )
 
 func main() {
 	router := fasthttprouter.New()
+	dbConn := SetDataBase()
 
-	catalogService.SetRoutes(router)
+	catService := catalogtSerivces.CatalogServiceMain(&dbConn)
+	catalogtSerivces.SetRoutes(router, catService)
+
 	fasthttp.ListenAndServe(":5200", CORS(router.Handler))
 }
 
@@ -30,4 +34,11 @@ func CORS(next fasthttp.RequestHandler) fasthttp.RequestHandler {
 
 		next(ctx)
 	}
+}
+
+func SetDataBase() database.MongoDBConfig {
+
+	conn := database.SetupMongoDBConfig("127.0.0.1", 27017, "mongoadmin", "secret")
+
+	return conn
 }
