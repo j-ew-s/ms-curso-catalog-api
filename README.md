@@ -2,7 +2,7 @@
 
 
 # Catalog Mod
-go mod init github.com/j-ew-s/ms-curso-user-api
+go mod init github.com/j-ew-s/ms-curso-catolog-api
 
 # Catalog API porta
 :5200
