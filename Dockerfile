@@ -22,4 +22,4 @@ EXPOSE 5200
 
 USER nonroot:nonroot
 
-CMD ["/catalog-api"]
+CMD ["/catalog-api"]Ÿ
